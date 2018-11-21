@@ -4,7 +4,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     register-with-eureka: false
   server:
-    enable-self-preservation: false # 用于开发环境，正式环境请注释
+    enable-self-preservation: false # 自我保护。一般用于开发环境，正式环境请注释
 spring:
   application:
     name: eureka

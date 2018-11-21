@@ -13,6 +13,7 @@
 
     <modules>
         <module>nav-eureka</module>
+        <module>nav-upms</module>
     </modules>
 
     <parent>
