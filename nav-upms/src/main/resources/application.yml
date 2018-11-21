@@ -7,3 +7,41 @@ eureka:
 spring:
   application:
     name: upms
+  datasource:
+    url: jdbc:mysql://192.168.2.106:3376/nav?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: nav
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      auto-commit: false
+      connection-timeout: 30000
+      idle-timeout: 25000
+      login-timeout: 5
+      max-lifetime: 30000
+      read-only: false
+      validation-timeout: 3000
+      maximum-pool-size: 15
+      minimum-idle: 10
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+mybatis-plus:
+  global-config:
+    db-config:
+      field-strategy: not_empty
+      id-type: auto
+      db-type: mysql
+    banner: false
+    #super-mapper-class: com.baomidou.mybatisplus.core.mapper.BaseMapper
+  #mapper-locations: classpath:mapper/*Mapper.xml
+  #type-enums-package: org.crown.emuns
+  type-aliases-package: com.uangtsui.nav.upms.model.entity,com.uangtsui.nav.upms.model.dto
