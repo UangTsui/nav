@@ -48,6 +48,4 @@ public class User extends SuperEntity<User> {
      * 邮箱
      */
     private String email;
-
-
 }
