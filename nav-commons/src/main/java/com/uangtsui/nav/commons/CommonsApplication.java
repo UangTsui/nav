@@ -1,4 +1,4 @@
-package com.example.nav.commons;
+package com.uangtsui.nav.commons;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

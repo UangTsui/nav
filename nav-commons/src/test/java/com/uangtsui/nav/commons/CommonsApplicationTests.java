@@ -1,4 +1,4 @@
-package com.example.nav.commons;
+package com.uangtsui.nav.commons;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,7 +3,10 @@ package com.uangtsui.nav.upms.server.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.uangtsui.nav.commons.model.dto.ResultDTO;
+import com.uangtsui.nav.commons.util.ResultDTOUtil;
 import com.uangtsui.nav.upms.server.model.entity.User;
 import com.uangtsui.nav.upms.server.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +33,12 @@ public class UserController extends ApiController {
     private IUserService userService;
 
     @GetMapping("userList")
-    public List<User> userList() {
+    public R userList() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("loginname", "admin");
         List<User> userList = userService.list(queryWrapper);
-        return userList;
+        //return ResultDTOUtil.success(userList);
+        return success(userList);
     }
 
     /**
