@@ -41,6 +41,11 @@ public class UserController extends ApiController {
         return success(userList);
     }
 
+    @GetMapping("restTemplateMsg")
+    public String restTemplateMsg(){
+        return "RestTemplateMsg";
+    }
+
     /**
      * 分页
      * @return

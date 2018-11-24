@@ -15,6 +15,7 @@
         <module>nav-eureka</module>
         <module>nav-upms</module>
         <module>nav-commons</module>
+        <module>nav-link</module>
     </modules>
 
     <parent>

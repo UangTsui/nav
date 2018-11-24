@@ -3,10 +3,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 #  instance:
-#    hostname: upmsname
+#    hostname: linkname
 spring:
   application:
-    name: upms
+    name: link
   datasource:
     url: jdbc:mysql://192.168.2.106:3376/nav?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: nav
@@ -40,7 +40,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.uangtsui.nav.upms.server.model.entity
+  typeAliasesPackage: com.uangtsui.nav.link.server.model.entity
   #typeEnumsPackage: com.baomidou.springboot.entity.enums
   global-config:
     # 数据库相关配置
@@ -65,4 +65,4 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
 server:
-  port: 8080
+  port: 8081
