@@ -16,6 +16,7 @@
         <module>nav-upms</module>
         <module>nav-commons</module>
         <module>nav-link</module>
+        <module>nav-config</module>
     </modules>
 
     <parent>
