@@ -1,6 +1,7 @@
 package com.uangtsui.nav.link.server.controller;
 
 import com.uangtsui.nav.link.server.config.RestTemplateConfig;
+import com.uangtsui.nav.upms.client.client.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -19,6 +20,9 @@ public class RestTemplateController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private UserClient userClient;
+
     @GetMapping("getRestTemplateMsg")
     public String getRestTemplateMsg(){
         // 1.第一种方式，使用RestTemplate的Url
@@ -27,12 +31,13 @@ public class RestTemplateController {
 
         // 2.第二种方式，先使用LoadBalancerClient获取Url，在通过RestTemplate获取
         ServiceInstance serviceInstance = loadBalancerClient.choose("UPMS");
-        String url = String.format("http://%s:%s", serviceInstance.getHost(), serviceInstance.getPort())
-                + "/user/restTemplateMsg";
+        //String url = String.format("http://%s:%s", serviceInstance.getHost(), serviceInstance.getPort())
+                //+ "/user/restTemplateMsg";
         //String str = restTemplate.getForObject(url, String.class);
 
         // 3.第三种方法，利用@LoadBalanced，可在RestTemplate中使用应用名称
-        String str = restTemplate.getForObject("http://UPMS/user/restTemplateMsg", String.class);
+        //String str = restTemplate.getForObject("http://UPMS/user/restTemplateMsg", String.class);
+        String str = userClient.restTemplateMsg();
         return str;
     }
 }

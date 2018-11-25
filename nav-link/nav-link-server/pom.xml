@@ -23,6 +23,7 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.M3</spring-cloud.version>
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
+        <upms-client.version>0.0.1-SNAPSHOT</upms-client.version>
 	</properties>
 
 	<dependencies>
@@ -60,6 +61,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.uangtsui</groupId>
+            <artifactId>upms-client</artifactId>
+            <version>${upms-client.version}</version>
         </dependency>
 
 		<dependency>

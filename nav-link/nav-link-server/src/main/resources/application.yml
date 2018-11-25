@@ -66,3 +66,7 @@ mybatis-plus:
     cache-enabled: false
 server:
   port: 8081
+# ribbon 默认轮训改为随机
+UPMS:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
