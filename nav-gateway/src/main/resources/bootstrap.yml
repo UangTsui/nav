@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: dev
+
+# 以下部分需要提取到GIT的配置文件中
+# 自定义路由
+zuul:
+  routes:
+    #user:
+      #path: /user/**
+      #serviceId: UPMS
+    # 简洁写法
+    upms: /user/**
+  # 排除某些路由
+  ignored-patterns:
+    - /**/user/userList

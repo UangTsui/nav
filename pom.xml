@@ -17,6 +17,7 @@
         <module>nav-commons</module>
         <module>nav-link</module>
         <module>nav-config</module>
+        <module>nav-gateway</module>
     </modules>
 
     <parent>
