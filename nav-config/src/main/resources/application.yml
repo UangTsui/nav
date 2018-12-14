@@ -5,9 +5,9 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/UangTsui/nav-config
-          username: username@qq.com
-          password: password
+          uri: https://github.com/UangTsui/nav-config.git
+          username:
+          password:
           basedir: /Users/uangtsui/IdeaProjects/nav/nav-config/basedir
   rabbitmq:
     host: 192.168.2.107
