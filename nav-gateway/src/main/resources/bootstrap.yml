@@ -20,3 +20,6 @@ zuul:
   # 排除某些路由
   ignored-patterns:
     - /**/user/userList
+
+server:
+  port: 8084

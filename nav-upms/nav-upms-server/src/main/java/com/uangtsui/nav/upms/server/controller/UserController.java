@@ -43,6 +43,11 @@ public class UserController extends ApiController {
 
     @GetMapping("restTemplateMsg")
     public String restTemplateMsg(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "RestTemplateMsg";
     }
 

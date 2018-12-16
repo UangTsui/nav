@@ -1,5 +1,8 @@
 package com.uangtsui.nav.link.server.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.uangtsui.nav.link.server.config.RestTemplateConfig;
 import com.uangtsui.nav.upms.client.client.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/rest")
+//@DefaultProperties(defaultFallback = "defaultFallback")
 public class RestTemplateController {
 
     @Autowired
@@ -23,6 +27,19 @@ public class RestTemplateController {
     @Autowired
     private UserClient userClient;
 
+    //@HystrixCommand(fallbackMethod = "fallback")
+    // 超时配置
+    /*@HystrixCommand(commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+    })*/
+    // 断路由
+    /*@HystrixCommand(commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")
+    })*/
+    //@HystrixCommand
     @GetMapping("getRestTemplateMsg")
     public String getRestTemplateMsg(){
         // 1.第一种方式，使用RestTemplate的Url
@@ -37,7 +54,18 @@ public class RestTemplateController {
 
         // 3.第三种方法，利用@LoadBalanced，可在RestTemplate中使用应用名称
         //String str = restTemplate.getForObject("http://UPMS/user/restTemplateMsg", String.class);
+
         String str = userClient.restTemplateMsg();
+
+        //throw new RuntimeException("异常也会触发降级");
         return str;
+    }
+
+    private String fallback() {
+        return "网络拥挤，请稍后再试";
+    }
+
+    private String defaultFallback() {
+        return "默认网络拥挤，请稍后再试";
     }
 }
