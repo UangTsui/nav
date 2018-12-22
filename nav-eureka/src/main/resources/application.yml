@@ -1,8 +1,14 @@
 eureka:
+  instance:
+    hostname: localhost
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      # 设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    # 表示是否将自己注册到Eureka Server，默认为true
     register-with-eureka: false
+    # 表示是否从Eureka Server获取注册信息，默认为true
+    fetch-registry: false
   server:
     enable-self-preservation: false # 自我保护。一般用于开发环境，正式环境请注释
 spring:

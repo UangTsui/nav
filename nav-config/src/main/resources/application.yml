@@ -5,10 +5,15 @@ spring:
     config:
       server:
         git:
+          # 配置git仓库的地址
           uri: https://github.com/UangTsui/nav-config.git
+          # git仓库的账号（私有库必填）
           username:
+          # git仓库的密码（私有库必填）
           password:
           basedir: /Users/uangtsui/IdeaProjects/nav/nav-config/basedir
+      # 配置git仓库的分支
+      label: master
   rabbitmq:
     host: 192.168.2.107
     port: 5672
@@ -18,10 +23,14 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+# 关闭安全认证
 management:
+  security:
+    enabled: false
+  # refresh接入点显式暴露出来
   endpoints:
     web:
       exposure:
-        include: "*" # 配置刷新配置文件接口，访问地址（POST请求）：http://localhost:8080/actuator/bus-refresh
+        include: refresh,health,info,bus-refresh
 server:
   port: 8082

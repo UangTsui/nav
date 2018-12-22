@@ -20,8 +20,17 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 3000
+# 开启Hystrix
 feign:
   hystrix:
     enabled: true
+# 关闭安全认证
 management:
   context-path: /
+  security:
+    enabled: false
+  # refresh接入点显式暴露出来
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
